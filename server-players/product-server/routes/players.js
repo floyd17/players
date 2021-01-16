@@ -1,9 +1,56 @@
 var express = require('express');
 var router = express.Router();
+const MongoClient = require('mongodb').MongoClient
+var db; 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true}, (err, database) => {
+  if (err) return console.log(err)
+  db = database.db('players')
+
+  /* GET ALL PLAYERS */
+  router.get('/', (req, res) => {
+    db.collection('details').find().toArray((err, result) => {
+      if (err) return
+      res.render('list.ejs', { players: result })
+    })
+  })
+
+  /* SHOW ADD PLAYER FORM */ 
+  router.get('/add', (req, res) => {
+    res.render('add.ejs', {})
+  })
+
+  /* ADD PRODUCT TO DB */
+  router.post('/add', (req, res) => {
+    db.collection('items').insertOne(req.body, (err, result) => {
+      if (err) return
+      res.redirect('/')
+    })
+  })
+
+  /* SEARCH FORM */
+  router.get('/search', (req, res) => {
+    res.render('search.ejs', {})
+  })
+
+  /* FIND A PLAYER */
+  router.post('/search', (req, res) => {
+  var query = { name: req.body.name }
+  db.collection('items').findOne(query, (err, result) => {
+    if (err) return
+    if (result == '')
+        res.render('search_not_found.ejs', {})
+    else
+        res.render('search_result.ejs', { players: result })
+  });
+  })
+
+  /* DELETE A PRODUCT */
+
+  router.delete('/delete/:name', (req, res) => {
+    db.collection('items').findOneAndDelete({ name: req.params.name })
+  })
+})
 
 module.exports = router;
