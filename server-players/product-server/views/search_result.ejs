@@ -8,15 +8,15 @@
   <h2>Result</h2>
   <br/><br/>
   <p>
-   <span><b>ID : </b><%= player.id %></span><br />
-   <span><b>Name : </b><%= player.name %></span><br/>
-   <span><b>Club : </b><%= player.club %></span><br />
-   <span><b>DOB : </b><%= player.dob %></span><br/>
-   <span><b>MarketValue : </b><%= player.marketvalue %></span><br/>
+   <span><b>ID : </b><%= players.id %></span><br />
+   <span><b>Name : </b><%= players.name %></span><br/>
+   <span><b>Club : </b><%= players.club %></span><br />
+   <span><b>DOB : </b><%= players.dob %></span><br/>
+   <span><b>MarketValue : </b><%= players.marketvalue %></span><br/>
   </p>
 
-  <form action='/products/delete' method='POST' onsubmit="return confirm('Bent U zeker?');">
-    <span><input type='hidden' name='id' value='<%= product.id %>'></span>
+  <form action='/players/delete' method='POST' onsubmit="return confirm('Bent U zeker?');">
+    <span><input type='hidden' name='id' value='<%= players.id %>'></span>
     <span><button type='submit'>Delete</button></span>
   </form>
 

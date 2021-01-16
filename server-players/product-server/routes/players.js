@@ -21,11 +21,11 @@ MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true}, (er
     res.render('add.ejs', {})
   })
 
-  /* ADD PRODUCT TO DB */
+  /* ADD PLAYER TO DB */
   router.post('/add', (req, res) => {
-    db.collection('items').insertOne(req.body, (err, result) => {
+    db.collection('details').insertOne(req.body, (err, result) => {
       if (err) return
-      res.redirect('/')
+      res.redirect('/players')
     })
   })
 
@@ -37,7 +37,7 @@ MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true}, (er
   /* FIND A PLAYER */
   router.post('/search', (req, res) => {
   var query = { name: req.body.name }
-  db.collection('items').findOne(query, (err, result) => {
+  db.collection('details').findOne(query, (err, result) => {
     if (err) return
     if (result == '')
         res.render('search_not_found.ejs', {})
@@ -46,10 +46,10 @@ MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true}, (er
   });
   })
 
-  /* DELETE A PRODUCT */
+  /* DELETE A PLAYER */
 
   router.delete('/delete/:name', (req, res) => {
-    db.collection('items').findOneAndDelete({ name: req.params.name })
+    db.collection('details').findOneAndDelete({ name: req.params.name })
   })
 })
 
