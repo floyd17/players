@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Players</title>
+</head>
+<body>
+  <h1>All players</h1>
+ <br/><br/>
+  <ul>
+  <% players.forEach(function(player) { %>
+    <li>
+      <span><b>ID : </b><%= player.ID %></span><br />
+      <span><b>Name : </b><%= player.name %></span><br />
+      <span><b>Club : </b><%= player.club %></span><br />
+      <span><b>DOB : </b><%= player.DOB %></span><br />
+      <span><b>MarketValue : </b><%= player.marketvalue %></span><br />
+    </li>
+  <% }) %>
+  </ul>
+<br/>
+
+<a href='/players/add'>Add players</a>&nbsp;&nbsp;<a href='/players/search'>Search player</a>
+
+</body>
+</html>
