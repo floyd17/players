@@ -10,11 +10,11 @@
   <ul>
   <% players.forEach(function(player) { %>
     <li>
-      <span><b>ID : </b><%= player.ID %></span><br />
-      <span><b>Name : </b><%= player.name %></span><br />
-      <span><b>Club : </b><%= player.club %></span><br />
-      <span><b>DOB : </b><%= player.DOB %></span><br />
-      <span><b>MarketValue : </b><%= player.marketvalue %></span><br />
+      <span><b>ID : </b><%= player.id %></span><br />
+      <span><b>Name : </b><%= player.value.name %></span><br />
+      <span><b>Club : </b><%= player.value.club %></span><br />
+      <span><b>DOB : </b><%= player.value.DOB %></span><br />
+      <span><b>MarketValue : </b><%= player.value.marketvalue %></span><br />
     </li>
   <% }) %>
   </ul>
