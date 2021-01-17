@@ -1,0 +1,27 @@
+<div class='container'>
+    <h1 class='display-4'>Add Product</h1>
+    <br/><br/>  
+   <form [formGroup]='player' (ngSubmit)='onSubmit(players)'>
+     <div class='form-group w-50'>
+       <label for='name'>Name</label>
+       <input type='text' class='form-control' formControlName='name' 
+         placeholder='Enter player name' formControlName='name' />
+     </div>  
+     <div class='form-group w-50'>
+       <label for='club'>Club</label>
+       <input type='text' class='form-control' formControlName='club' 
+         placeholder='Enter club name' formControlName='club' />
+     </div>
+     <div class='form-group w-50'>
+       <label for='dob'>DOB</label>
+       <input type='text' class='form-control' formControlName='dob' 
+         placeholder='Enter DOB' formControlName='dob' />
+     </div>
+     <div class='form-group w-50'>
+       <label for='marketvalue'>MARKETVALUE</label>
+       <input type='text' class='form-control' formControlName='marketvalue' 
+         placeholder='Enter marketvalue' formControlName='marketvalue' />
+     </div>
+     <button class='btn btn-outline-primary' type='submit' [disabled]='!player.valid'>Add</button>
+   </form>
+ </div>
